@@ -1,8 +1,9 @@
+import Layout from "@/containers/layout";
+
 export default function App() {
   return (
-    <div>
-      <h1>Hello, world!</h1>
-      <p>This is a simple React application.</p>
-    </div>
+    <Layout>
+      <p>Shadcn components were added</p>
+    </Layout>
   );
 }
