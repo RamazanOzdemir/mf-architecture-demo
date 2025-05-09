@@ -49,7 +49,9 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin(),
     new ModuleFederationPlugin({
       name: "shell",
-      remotes: {},
+      remotes: {
+        fragment: `fragment@http://localhost:3001/remoteEntry.js`,
+      },
       shared,
     }),
   ],
