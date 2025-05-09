@@ -1,6 +1,17 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const deps = require("./package.json").dependencies;
 const path = require("path");
+require("dotenv").config();
+
+const shared = {};
+for (const key in deps) {
+  shared[key] = {
+    singleton: true,
+    requiredVersion: deps[key],
+  };
+}
 
 module.exports = {
   entry: "./src/index.ts",
@@ -36,5 +47,10 @@ module.exports = {
       filename: "index.html",
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new ModuleFederationPlugin({
+      name: "shell",
+      remotes: {},
+      shared,
+    }),
   ],
 };

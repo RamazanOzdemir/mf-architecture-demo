@@ -12,7 +12,7 @@ module.exports = merge(common, {
   },
   devServer: {
     static: path.resolve(__dirname, "../dist"),
-    port: 3000,
+    port: process.env.PORT,
     historyApiFallback: true,
     open: true,
     hot: true,
