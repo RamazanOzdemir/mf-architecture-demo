@@ -1,4 +1,5 @@
 import Layout from "@/containers/layout";
+import ModuleLoader from "./components/module-loader";
 
 export default function App() {
   return (
