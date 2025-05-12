@@ -6,9 +6,8 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "cheap-module-source-map",
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "../dist"),
-    clean: true,
+    filename: "[name].bundle.js",
+    publicPath: "/",
   },
   devServer: {
     static: path.resolve(__dirname, "../dist"),
@@ -16,5 +15,8 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: true,
     hot: true,
+  },
+  optimization: {
+    runtimeChunk: "single",
   },
 });
