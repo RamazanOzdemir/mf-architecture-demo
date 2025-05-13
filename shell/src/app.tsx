@@ -5,6 +5,11 @@ export default function App() {
   return (
     <Layout>
       <p>Shadcn components were added</p>
+      <ModuleLoader
+        scope="dashboard"
+        module="./Main"
+        fallback={<div>Loading...</div>}
+      />
     </Layout>
   );
 }

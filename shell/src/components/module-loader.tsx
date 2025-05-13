@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import loadFragment from "@/lib/load-fragment";
 import useDynamicScript from "@/hooks/use-dynamic-scripts";
+import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
 export type ModuleLoaderProps = {
   scope: string;
@@ -14,13 +15,21 @@ export default function ModuleLoader({
   fallback,
   ...params
 }: ModuleLoaderProps) {
-  const { ready, failed } = useDynamicScript(
-    "http://localhost:3001/remoteEntry.js"
+  init({
+    name: "shell",
+    remotes: [
+      {
+        name: scope,
+        entry: `http://localhost:3001/remoteEntry.js`,
+      },
+    ],
+  });
+
+  const Component = lazy(() =>
+    loadRemote(`${scope}/${module}`).then((module: any) => ({
+      default: module.default,
+    }))
   );
-  if (!ready && failed) {
-    return <div>Failed to load remote entry</div>;
-  }
-  const Component = lazy(loadFragment(scope, module));
 
   return (
     <Suspense fallback={fallback || ""}>
