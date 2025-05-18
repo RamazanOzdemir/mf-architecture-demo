@@ -13,7 +13,6 @@ module.exports = merge(common, {
     static: path.resolve(__dirname, "../dist"),
     port: process.env.PORT,
     historyApiFallback: true,
-    open: true,
     hot: true,
   },
 });
