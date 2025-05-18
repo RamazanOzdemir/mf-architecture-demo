@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require("@module-federation/enhanced");
 const deps = require("./package.json").dependencies;
 require("dotenv").config();
 
@@ -51,6 +51,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "fragment_scope",
       filename: "remoteEntry.js",
+      library: { type: "global", name: "fragment_scope" },
+
       exposes: {
         "./Main": "./src/app.tsx",
       },
