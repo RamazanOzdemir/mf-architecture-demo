@@ -35,18 +35,5 @@ export default function ModuleLoader({
   fallback,
   ...params
 }: ModuleLoaderProps) {
-  const Component = lazy(() => {
-    return loadRemote(`${scope}/${module}`)
-      .then((module: any) => {
-        return {
-          default: module.default,
-        };
-      })
-      .catch((error) => {
-        // Fallback to a dummy component if module is missing
-        return { default: () => <h2>Module not found</h2> };
-      });
-  });
-
   return <System request={"dashboard/Main"} />;
 }
