@@ -3,7 +3,6 @@ import { init } from "@module-federation/enhanced/runtime";
 import { fallbackPlugin } from "./federation-plugins";
 
 export const initFragments = () => {
-  debugger;
   init({
     name: "shell",
     remotes: fragments,
