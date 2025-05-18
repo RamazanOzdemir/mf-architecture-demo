@@ -35,5 +35,5 @@ export default function ModuleLoader({
   fallback,
   ...params
 }: ModuleLoaderProps) {
-  return <System request={"dashboard/Main"} />;
+  return <System request={`${scope}/${module}`} />;
 }
