@@ -6,7 +6,6 @@ export default function App() {
   return (
     <Startup>
       <Layout>
-        <p>Shadcn components were added</p>
         <ModuleLoader
           scope="dashboard"
           module="Main"
