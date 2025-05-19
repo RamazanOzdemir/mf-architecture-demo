@@ -45,7 +45,7 @@ export default function RecentOrders() {
             <TableHead>Customer</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Date</TableHead>
-            <TableHead className="text-right">Date</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -54,8 +54,8 @@ export default function RecentOrders() {
               <TableCell className="font-medium">{order.id}</TableCell>
               <TableCell>{order.customer}</TableCell>
               <TableCell>{order.status}</TableCell>
-              <TableCell>{order.amount}</TableCell>
-              <TableCell className="text-right">{order.date}</TableCell>
+              <TableCell>{order.date}</TableCell>
+              <TableCell className="text-right">{order.amount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
