@@ -10,27 +10,28 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { NavLink } from "react-router";
 
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "#",
+    path: "/",
     icon: Home,
   },
   {
     title: "Users",
-    url: "#",
+    path: "users",
     icon: Users,
   },
   {
     title: "Products",
-    url: "#",
+    path: "products",
     icon: PackageSearch,
   },
   {
     title: "Statistics",
-    url: "#",
+    path: "stats",
     icon: ChartArea,
   },
 ];
@@ -46,10 +47,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <NavLink to={item.path}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

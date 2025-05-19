@@ -1,17 +1,11 @@
 import Layout from "@/containers/layout";
-import ModuleLoader from "./components/module-loader";
 import Startup from "./startup";
-
+import { Routes, Route } from "react-router";
+import Main from "@/containers/main";
 export default function App() {
   return (
     <Startup>
-      <Layout>
-        <ModuleLoader
-          scope="dashboard"
-          module="Main"
-          fallback={<div>Loading...</div>}
-        />
-      </Layout>
+      <Main />
     </Startup>
   );
 }
