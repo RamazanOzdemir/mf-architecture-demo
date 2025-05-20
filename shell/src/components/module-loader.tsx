@@ -13,13 +13,18 @@ const System = ({ request }: { request: string }) => {
   }
 
   const Component = lazy(() =>
-    loadRemote(request).then((mod: any) => {
-      if (!mod || !mod.default) {
-        // Fallback to a dummy component if module is missing
-        return { default: () => <h2>Module not found</h2> };
-      }
-      return { default: mod.default };
-    })
+    loadRemote(request)
+      .then((mod: any) => {
+        if (!mod || !mod.default) {
+          // Fallback to a dummy component if module is missing
+          return { default: () => <h2>Module not found</h2> };
+        }
+        return { default: mod.default };
+      })
+      .catch((error) => {
+        console.error("Error loading remote module:", error);
+        return { default: () => <h2>Error loading module</h2> };
+      })
   );
 
   return (
@@ -35,5 +40,6 @@ export default function ModuleLoader({
   fallback,
   ...params
 }: ModuleLoaderProps) {
+  console.log("ModuleLoader", scope, module);
   return <System request={`${scope}/${module}`} />;
 }
