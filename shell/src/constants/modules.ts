@@ -6,9 +6,9 @@ export const modules = [
     module: "Main",
   },
   {
-    name: "dashboard",
+    name: "users",
     path: "users",
-    scope: "dashboard",
+    scope: "users",
     module: "Main",
   },
 ];

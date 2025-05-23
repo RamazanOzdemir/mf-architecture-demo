@@ -5,8 +5,8 @@ const fragments: Array<Remote> = [
     entry: "http://localhost:3001/remoteEntry.js",
   },
   {
-    name: "dashboard",
-    entry: "http://localhost:3001/remoteEntry.js",
+    name: "users",
+    entry: "http://localhost:3002/remoteEntry.js",
   },
 ];
 

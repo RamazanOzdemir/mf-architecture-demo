@@ -7,32 +7,27 @@ export type ModuleLoaderProps = {
   fallback?: React.ReactNode;
 };
 
-const System = ({ request }: { request: string }) => {
-  if (!request) {
-    return <h2>No system specified</h2>;
+const componentCache = new Map<string, React.LazyExoticComponent<any>>();
+
+function getLazyComponent(request: string) {
+  if (!componentCache.has(request)) {
+    const LazyComp = lazy(() =>
+      loadRemote(request)
+        .then((mod: any) => {
+          if (!mod || typeof mod !== "object" || !("default" in mod)) {
+            return { default: () => <h2>The module not founded</h2> };
+          }
+          return { default: mod.default };
+        })
+        .catch(() => {
+          return { default: () => <h2>Loading Failure</h2> };
+        })
+    );
+    componentCache.set(request, LazyComp);
   }
 
-  const Component = lazy(() =>
-    loadRemote(request)
-      .then((mod: any) => {
-        if (!mod || !mod.default) {
-          // Fallback to a dummy component if module is missing
-          return { default: () => <h2>Module not found</h2> };
-        }
-        return { default: mod.default };
-      })
-      .catch((error) => {
-        console.error("Error loading remote module:", error);
-        return { default: () => <h2>Error loading module</h2> };
-      })
-  );
-
-  return (
-    <Suspense fallback="Loading System">
-      <Component />
-    </Suspense>
-  );
-};
+  return componentCache.get(request)!;
+}
 
 export default function ModuleLoader({
   scope,
@@ -40,6 +35,12 @@ export default function ModuleLoader({
   fallback,
   ...params
 }: ModuleLoaderProps) {
-  console.log("ModuleLoader", scope, module);
-  return <System request={`${scope}/${module}`} />;
+  const request = `${scope}/${module}`;
+  const Component = getLazyComponent(request);
+
+  return (
+    <Suspense fallback={fallback || "Loading System"}>
+      <Component {...params} />
+    </Suspense>
+  );
 }
