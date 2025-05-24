@@ -13,6 +13,7 @@ import {
   TableRow,
 } from "./ui/table";
 import { User } from "@/mode";
+import { Avatar, AvatarImage } from "./ui/avatar";
 
 const queryClient = new QueryClient();
 
@@ -51,7 +52,13 @@ export function Users() {
       <TableBody>
         {data?.results.map((user, index) => (
           <TableRow key={`user-table-row-${index}`}>
-            <TableCell className="font-medium">{user.nat}</TableCell>
+            <TableCell className="font-medium">
+              {
+                <Avatar>
+                  <AvatarImage sizes="xl" src={user.picture.thumbnail} />
+                </Avatar>
+              }
+            </TableCell>
             <TableCell>{`${user.name.first} ${user.name.last}`}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.nat}</TableCell>
