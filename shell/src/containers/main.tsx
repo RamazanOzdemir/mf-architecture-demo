@@ -2,6 +2,7 @@ import ModuleLoader from "@/components/module-loader";
 import { modules } from "@/constants/modules";
 import { Routes, Route } from "react-router";
 import Layout from "./layout";
+import NotFoundPage from "./not-found";
 
 export default function Main() {
   return (
@@ -20,6 +21,10 @@ export default function Main() {
             }
           />
         ))}
+        <Route
+          path="*"
+          element={<NotFoundPage />} // Fallback for unmatched routes
+        />
       </Route>
     </Routes>
   );

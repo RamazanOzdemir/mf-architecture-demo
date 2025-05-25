@@ -29,11 +29,6 @@ const items = [
     path: "products",
     icon: PackageSearch,
   },
-  {
-    title: "Statistics",
-    path: "stats",
-    icon: ChartArea,
-  },
 ];
 
 export function AppSidebar() {
