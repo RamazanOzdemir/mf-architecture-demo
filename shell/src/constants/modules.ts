@@ -11,4 +11,10 @@ export const modules = [
     scope: "users",
     module: "Main",
   },
+  {
+    name: "products",
+    path: "/products/*",
+    scope: "products",
+    module: "Main",
+  },
 ];

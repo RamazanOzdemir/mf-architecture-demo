@@ -8,6 +8,10 @@ const fragments: Array<Remote> = [
     name: "users",
     entry: "http://localhost:3002/remoteEntry.js",
   },
+  {
+    name: "products",
+    entry: "http://localhost:3003/remoteEntry.js",
+  },
 ];
 
 export default fragments;
