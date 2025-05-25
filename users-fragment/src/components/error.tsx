@@ -4,8 +4,8 @@ export type ErrorMessageProps = {
 
 export default function ErrorMessage({ error }: ErrorMessageProps) {
   return (
-    <div className="text-red-600 bg-red-50 p-4 rounded-md">
+    <section className="text-red-600 bg-red-50 p-4 rounded-md">
       Error: {error.message}
-    </div>
+    </section>
   );
 }

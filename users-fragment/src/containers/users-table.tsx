@@ -12,6 +12,7 @@ import { User } from "@/model";
 import { Avatar, AvatarImage } from "../components/ui/avatar";
 import Loading from "@/components/loading";
 import ErrorMessage from "@/components/error";
+import { useNavigate } from "react-router";
 
 export default function UsersTable() {
   const { data, isLoading, error } = useQuery<{ results: Array<User> }>({
@@ -22,6 +23,8 @@ export default function UsersTable() {
       return response.json();
     },
   });
+
+  let navigate = useNavigate();
 
   if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error as Error} />;
@@ -48,6 +51,7 @@ export default function UsersTable() {
             <TableRow
               key={`user-table-row-${index}`}
               className="hover:bg-gray-50 transition"
+              onClick={() => navigate(`${index + 1}`)} // Navigate to user detail page
             >
               <TableCell className="font-medium">
                 <Avatar className="h-10 w-10 border-2 border-gray-200 shadow-sm">

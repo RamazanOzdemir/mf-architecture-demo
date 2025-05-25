@@ -7,7 +7,7 @@ export const modules = [
   },
   {
     name: "users",
-    path: "users",
+    path: "/users/*",
     scope: "users",
     module: "Main",
   },
