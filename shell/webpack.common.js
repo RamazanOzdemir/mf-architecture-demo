@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("@module-federation/enhanced");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
@@ -50,6 +51,17 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "shell",
       shared,
+    }),
+    new webpack.DefinePlugin({
+      "process.env.DASHBOARD_FRAGMENT_URL": JSON.stringify(
+        process.env.DASHBOARD_FRAGMENT_URL
+      ),
+      "process.env.USERS_FRAGMENT_URL": JSON.stringify(
+        process.env.USERS_FRAGMENT_URL
+      ),
+      "process.env.PRODUCTS_FRAGMENT_URL": JSON.stringify(
+        process.env.PRODUCTS_FRAGMENT_URL
+      ),
     }),
   ],
 };
