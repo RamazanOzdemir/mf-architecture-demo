@@ -13,7 +13,7 @@ export const modules = [
   },
   {
     name: "products",
-    path: "/products/*",
+    path: "/products",
     scope: "products",
     module: "Main",
   },

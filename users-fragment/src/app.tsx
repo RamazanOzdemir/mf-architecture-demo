@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, Routes } from "react-router";
 import UsersTable from "@/containers/users-table";
 import UserDetail from "@/containers/user";
+import NotFoundPage from "@/containers/not-found";
 
 import "./styles/globals.css";
 
@@ -13,8 +14,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<UsersTable />} />
         <Route path=":uid" element={<UserDetail />} />
-        <Route path="test" element={<div>test</div>} />
-        <Route path="test/*" element={<div>test all</div>} />
+        <Route
+          path="*"
+          element={<NotFoundPage />} // Fallback for unmatched routes
+        />
       </Routes>
     </QueryClientProvider>
   );
