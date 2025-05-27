@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" element={<UsersTable />} />
         <Route path=":uid" element={<UserDetail />} />
         <Route
-          path="*"
+          path="/*"
           element={<NotFoundPage />} // Fallback for unmatched routes
         />
       </Routes>

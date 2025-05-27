@@ -22,7 +22,7 @@ export default function Main() {
           />
         ))}
         <Route
-          path="*"
+          path="/*"
           element={<NotFoundPage />} // Fallback for unmatched routes
         />
       </Route>
