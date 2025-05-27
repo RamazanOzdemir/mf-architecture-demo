@@ -47,6 +47,10 @@ module.exports = {
       template: "./public/index.html",
       filename: "index.html",
     }),
+    new HtmlWebpackPlugin({
+      filename: "404.html", // 👈 fallback dosyası
+      template: "./public/index.html", // aynı içerik
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new ModuleFederationPlugin({
       name: "shell",
