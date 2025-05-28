@@ -26,6 +26,10 @@ export default function Main() {
           element={<NotFoundPage />} // Fallback for unmatched routes
         />
       </Route>
+      <Route
+        path="/*"
+        element={<NotFoundPage />} // Fallback for unmatched routes
+      />
     </Routes>
   );
 }
