@@ -7,12 +7,12 @@ module.exports = merge(common, {
   devtool: "cheap-module-source-map",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, "./dist"),
     clean: true,
     publicPath: "/",
   },
   devServer: {
-    static: path.resolve(__dirname, "../dist"),
+    static: path.resolve(__dirname, "./dist"),
     port: process.env.PORT,
     historyApiFallback: true,
     open: true,
